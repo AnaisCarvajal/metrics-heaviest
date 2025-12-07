@@ -1,0 +1,14 @@
+# Repositorios clonados (no subir código de terceros)
+repositories/
+results/
+jtmetrics-runner/
+
+# Dependencias
+node_modules/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.local
