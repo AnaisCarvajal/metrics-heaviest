@@ -43,8 +43,8 @@ $projects = @(
     @{ID="P99"; Name="aws-sdk-client-s3"; Repo="https://github.com/aws/aws-sdk-js-v3.git"}
 )
 
-$reposDir = "C:\Users\anais\OneDrive\Documentos\Github\Metrics2\repositories"
-$metricsDir = "C:\Users\anais\OneDrive\Documentos\Github\Metrics2\jtmetrics-runner"
+$reposDir = "C:\Users\anais\OneDrive\Documentos\Github\jtmetrics-qa\repositories"
+$metricsDir = "C:\Users\anais\OneDrive\Documentos\Github\jtmetrics-qa\jtmetrics-runner"
 
 if (-not (Test-Path $metricsDir)) {
     New-Item -ItemType Directory -Path $metricsDir -Force | Out-Null

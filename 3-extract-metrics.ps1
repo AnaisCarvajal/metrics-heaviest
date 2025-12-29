@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$resultsDir = "C:\Users\anais\OneDrive\Documentos\Github\Metrics2\results"
+$resultsDir = "C:\Users\anais\OneDrive\Documentos\Github\jtmetrics-qa\results"
 $output = @()
 
 # Get all project directories

@@ -27,7 +27,7 @@ foreach ($project in $projects) {
     
     Write-Host "[$project]"
     
-    $projectResultsDir = "C:\Users\anais\OneDrive\Documentos\Github\Metrics2\results\$project"
+    $projectResultsDir = "C:\Users\anais\OneDrive\Documentos\Github\jtmetrics-qa\results\$project"
     $resultsFile = Join-Path $projectResultsDir 'results.json'
     
     # Check if results.json already exists
