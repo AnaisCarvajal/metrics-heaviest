@@ -1,7 +1,10 @@
 $ErrorActionPreference = "Stop"
 
+$env:NODE_OPTIONS = "--max-old-space-size=16384"
+
 $projects = @(
-    "P1-googleapis", "P4-prisma-client", "P5-react-native", "P8-prisma",
+    "P1-googleapis",
+    "P4-prisma-client", "P5-react-native", "P8-prisma",
     "P15-turbo-linux-64", "P18-storybook-core", "P20-firebase", "P28-react-devtools-core",
     "P29-esbuild-wasm", "P30-msal-browser", "P31-npm", "P35-schematics-angular",
     "P36-apollo-client", "P38-opentelemetry-semantic-conventions", "P40-bootstrap",
@@ -15,6 +18,7 @@ $projects = @(
 
 $success = 0
 $failed = 0
+$executionLog = @()
 
 foreach ($project in $projects) {
     $parts = $project -split '-', 2
@@ -23,17 +27,19 @@ foreach ($project in $projects) {
     
     Write-Host "[$project]"
     
-    $resultsPath = "C:\Users\anais\OneDrive\Documentos\Github\Metrics2\results\$project\results.json"
+    $projectResultsDir = "C:\Users\anais\OneDrive\Documentos\Github\Metrics2\results\$project"
+    $resultsFile = Join-Path $projectResultsDir 'results.json'
     
-    if (Test-Path $resultsPath) {
-        Write-Host "  SKIP: Results exist"
+    # Check if results.json already exists
+    if (Test-Path $resultsFile) {
+        Write-Host "  SKIP: Already analyzed"
         continue
     }
     
-    $env:NODE_OPTIONS = "--max-old-space-size=16384"
     node analyze.mjs $id $name
     
-    if (Test-Path $resultsPath) {
+    # Verify results.json was created
+    if (Test-Path $resultsFile) {
         Write-Host "  OK"
         $success++
     } else {
